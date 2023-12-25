@@ -6,8 +6,12 @@
 * `chmod +x setup.sh`
 * `./setup.sh`
 
-## GIT 
+## RUN (TERMUX)
 ```
-$git clone https://github.com/TARHEXX/Tar_LM
-
+$ cd Tar_LM
+```
+```
+$ls
+```
+$ python3 linkphish.sh
 ```
