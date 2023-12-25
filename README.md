@@ -11,7 +11,7 @@
 $ cd Tar_LM
 ```
 ```
-$ls
+$chmod +x linkphish.py
 ```
 ```
 $ python3 linkphish.sh
