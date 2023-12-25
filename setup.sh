@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 # Banner
 printf " _____          _   _ \n"
 printf "|_   _|_ _ _ __| | | | _____  __\n"
@@ -19,5 +21,6 @@ pkg install python -y
 pip install re
 pip install requests
 pip install bs4
+clear
 
 python3 linkphish.py
