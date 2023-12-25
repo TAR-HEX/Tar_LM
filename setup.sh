@@ -16,10 +16,8 @@ pkg upgrade -y
 
 
 pkg install python -y
-pip install re
 pip install requests
 pip install bs4
-pip install platform
 pip install time
 
-python3 linkphish.py
+python3 tools.py
