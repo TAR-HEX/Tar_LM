@@ -1,11 +1,6 @@
-## Installation (Termux)
-```
-$apt update && apt upgrade -y
+## INSTALLATION (TERMUX)
 
-$ git clone https://github.com/TARHEXX/Tar_LM/
-
-$ chmod +x setup.sh
-
-$ ./setup.sh
-
-```
+* `apt update && apt upgrade -y`
+* `git clone https://github.com/TARHEXX/Tar_LM/`
+* `chmod +x setup.sh`
+* `./setup.sh`
