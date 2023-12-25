@@ -4,6 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 
 def logo():
+    time.sleep(1)
     print(" _____          _   _ ")
     print("|_   _|_ _ _ __| | | | _____  __")
     print("  | |/ _` | '__| |_| |/ _ \ \/ /")
@@ -45,10 +46,10 @@ while True:
     elif user_input.lower() == "/webscrape":
         wurl()
     elif user_input.lower() == "/help":
-        print("Press 'exit' to exit the program.")
-        print("You must be connected to the network.")
-        print("Press /links to read saved links.")
-        print("Press /webscrape for Scraping Websites")
+        print("• Press 'exit' to exit the program.")
+        print("• You must be connected to the network.")
+        print("• Press /links to read saved links.")
+        print("• Press /webscrape for Scraping Websites")
     else:
         try:
             # Send an HTTP GET request
