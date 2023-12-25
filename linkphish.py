@@ -26,6 +26,7 @@ def wurl():
         print("No Option Chosen")
 
 while True:
+    time.sleep(1)
     logo()
     time.sleep(1)
     print("Press '/help' for help or 'exit' to exit.")
