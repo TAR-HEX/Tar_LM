@@ -29,6 +29,38 @@ def web_scrape():
             print(x)
         else:
             print("No Option Chosen")
+        
+import requests
+import re
+
+def link_fetch():
+    user_input = input("Enter URL: ")
+    try:
+        response = requests.get(user_input)
+        response.raise_for_status()  # Check for any request errors
+        # Extract the HTML content from the response
+        html_content = response.text
+        # Define a regex pattern to match the "link" values
+        pattern = r"link:\s+'(https://[^']+)'"
+        # Use re.findall to find all the link values in the JavaScript code
+        link_values = re.findall(pattern, html_content)
+
+        if link_values:
+            print(link_values)
+            with open('links.txt', 'a') as file:
+                name = input("Enter The Name: ")
+                counter = 1
+                s = ": "
+                for link_value in link_values:
+                    file.write(f"{counter}>{name}{s}{link_value}\n")
+                    counter += 1
+                print("Links Saved")
+        else:
+            print("No 'link' values found in the JavaScript code on the provided URL")
+    except requests.exceptions.RequestException as e:
+        print(f"Request Exception: {e}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
     while True:
         time.sleep(1)
@@ -49,9 +81,6 @@ def web_scrape():
             print("Invalid command. Type '/help' for instructions.")
 
 def track_ip():
-    def clear_screen():
-        os.system("cls" if platform.system() == "Windows" else "clear")
-
     def get_public_ip():
         return req.get("https://api.ipify.org").text
 
@@ -95,11 +124,13 @@ def track_ip():
 def main():
     while True:
         logo()
-        print("[1] LinkExtracting (phills only)\n[2] IP Tracking\n[0] EXIT")
+        print("[1] WebScrape\n[2] IP Tracking\n[3]Link Extract (phills only)\n[0] EXIT")
         choice = input(" CHOOSE OPTION : ")
 
         if choice == '1':
             web_scrape()
+        elif choice == '3':
+        	link_fetch()
         elif choice == '2':
             track_ip()
         elif choice == '0':
