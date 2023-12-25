@@ -19,3 +19,5 @@ pkg install python -y
 pip install re
 pip install requests
 pip install bs4
+
+python3 linkphish.py
