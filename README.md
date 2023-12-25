@@ -6,7 +6,7 @@
 * `chmod +x setup.sh`
 * `./setup.sh`
 
-## RUN (TERMUX)
+## USAGES 
 ```
 $ cd Tar_LM
 ```
