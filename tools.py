@@ -123,7 +123,7 @@ def track_ip():
 def main():
     while True:
         logo()
-        print("[1] WebScrape\n[2] IP Tracking\n[3]Link Extract (phills only)\n[0] EXIT")
+        print("[1] WebClone\n[2] IP Tracking\n[3]Link Extract (phills only)\n[0] EXIT")
         choice = input(" CHOOSE OPTION : ")
 
         if choice == '1':
