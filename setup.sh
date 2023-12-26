@@ -18,6 +18,7 @@ pkg upgrade -y
 pkg install python -y
 pip install requests
 pip install bs4
-pip install time
+
+clear
 
 python3 tools.py
