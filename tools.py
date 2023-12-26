@@ -17,6 +17,8 @@ red = "\033[1;31m"
 
 def logo():
         time.sleep(0.5)
+        print(f"{yellow}==========================================={reset}")
+        print(f"{purple}==========================================={reset}")
         print(f"{red}_____          _   _ ")
         print(f"|_   _|_ _ _ __| | | | _____  __")
         print(f"  | |/ _` | '__| |_| |/ _ \ \/ /")
@@ -43,7 +45,9 @@ def web_scrape():
         
 
 def link_fetch():
-    user_input = input("Enter URL: ")        
+        print(f"{yellow} Link Can Be Only Extracted From Locconnect Website{reset}")
+        time.sleep(1)
+    user_input = input("Enter URL: ")
     try:
         response = requests.get(user_input)
         response.raise_for_status()  # Check for any request errors
