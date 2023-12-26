@@ -15,7 +15,6 @@ def logo():
 
 
 def web_scrape():
-    def save_or_print():
         weurl = input("Enter Web Scrape Link: ")
         response = requests.get(weurl)
         x = response.text
