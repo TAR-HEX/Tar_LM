@@ -45,36 +45,32 @@ def web_scrape():
         
 
 def link_fetch():
-        print(f"{yellow} Link Can Be Only Extracted From Locconnect Website{reset}")
-        time.sleep(1)
-    user_input = input("Enter URL: ")
-    try:
-        response = requests.get(user_input)
-        response.raise_for_status()  # Check for any request errors
-        # Extract the HTML content from the response
-        html_content = response.text
-        # Define a regex pattern to match the "link" values
-        pattern = r"link:\s+'(https://[^']+)'"
-        # Use re.findall to find all the link values in the JavaScript code
-        link_values = re.findall(pattern, html_content)
+    print(f"{yellow} Link Can Be Only Extracted From Locconnect Website{reset}")
+    time.sleep(1)
+    
+user_input = input("Enter URL: ")
+try:
+    response = requests.get(user_input)
+    response.raise_for_status()  # Check for any request errors
+    # Extract the HTML content from the response
+    html_content = response.text
+    # Define a regex pattern to match the "link" values
+    pattern = r"link:\s+'(https://[^']+)'"
+    # Use re.findall to find all the link values in the JavaScript code
+    link_values = re.findall(pattern, html_content)
 
-        if link_values:
-            print(link_values)
-            with open('links.txt', 'a') as file:
-                name = input("Enter The Name: ")
-                counter = 1
-                s = ": "
-                for link_value in link_values:
-                    file.write(f"{counter}>{name}{s}{link_value}\n")
-                    counter += 1
-                print("Links Saved")
-        else:
-            print("No 'link' values found in the JavaScript code on the provided URL")
-    except requests.exceptions.RequestException as e:
-        print(f"Request Exception: {e}")
-    except Exception as e:
-        print(f"An error occurred: {e}")
-
+    if link_values:
+        print(link_values)
+        with open('links.txt', 'a') as file:
+            name = input("Enter The Name: ")
+            counter = 1
+            s = ": "
+            for link_value in link_values:
+                file.write(f"{counter}>{name}{s}{link_value}\n")
+                counter += 1
+            print("Links Saved")
+except requests.RequestException as e:
+    print(f"Error: {e}")
     while True:
         time.sleep(1)
         logo()
