@@ -22,8 +22,8 @@ def logo():
         print(f"  | |/ _` | '__| |_| |/ _ \ \/ /")
         print(f"  | | (_| | |  |  _  |  __/>  <{yellow} Version: 1.00{red}")
         print(f"  |_|\__,_|_|  |_| |_|\___/_/\_\n{reset}")
-        print("{yellow}==========================================={reset}")
-        print("{red}==========================================={reset}")
+        print(f"{yellow}==========================================={reset}")
+        print(f"{red}==========================================={reset}")
 
 
 def web_scrape():
@@ -43,7 +43,7 @@ def web_scrape():
         
 
 def link_fetch():
-    user_input = input("Enter URL: ")
+    user_input = input("Enter URL: ")        
     try:
         response = requests.get(user_input)
         response.raise_for_status()  # Check for any request errors
