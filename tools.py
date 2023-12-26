@@ -16,6 +16,7 @@ yellow = "\033[1;33m"
 red = "\033[1;31m"
 
 def logo():
+        time.sleep(0.5)
         print(f"{red}_____          _   _ ")
         print(f"|_   _|_ _ _ __| | | | _____  __")
         print(f"  | |/ _` | '__| |_| |/ _ \ \/ /")
@@ -38,8 +39,6 @@ def web_scrape():
         else:
             print("No Option Chosen")
         
-import requests
-import re
 
 def link_fetch():
     user_input = input("Enter URL: ")
@@ -87,6 +86,18 @@ def link_fetch():
             print("Press /webscrape for Scraping Websites")
         else:
             print("Invalid command. Type '/help' for instructions.")
+
+def url_shortner():
+    try:
+        user_link = input(f"{yellow}Enter The Url :- {reset}")
+        urls = f"https://is.gd/create.php?format=simple&url={user_link}"
+        user_response = requests.get(urls)
+        shorturl = user_response.text
+        print(f"{red}=>{reset} {blue}{shorturl}{reset}")
+    except requests.ConnectionError:
+        print(f"{red}ERROR{reset}")
+        time.sleep(0.5)
+        print(f"{yellow}Make Sure Your{reset} {red}Internet{reset} {yellow}Is Enabled!{reset}")
 
 def track_ip():
     def get_public_ip():
@@ -136,7 +147,7 @@ def track_ip():
 def main():
     while True:
         logo()
-        print(f"{red}[1]{reset}{yellow}WebClone{reset}\n{red}[2]{reset}{yellow} IP Tracking{reset}\n{red}[3]{reset}{yellow}Fetch Url{reset}\n{cyan}[0]{reset}{green} EXIT{reset}")
+        print(f"{red}[1]{reset}{yellow}WebClone{reset}\n{red}[2]{reset}{yellow} IP Tracking{reset}\n{red}[3]{reset}{yellow}Fetch Url{reset}\n{red}[4]{reset}{yellow}Mask Url{reset}\n{cyan}[0]{reset}{green}EXIT{reset}")
         choice = input(f"{red} CHOOSE OPTION : {reset}")
 
         if choice == '1':
@@ -145,6 +156,8 @@ def main():
             link_fetch()
         elif choice == '2':
             track_ip()
+        elif choice == '4':
+        	url_shortner()
         elif choice == '0':
             break
         else:
