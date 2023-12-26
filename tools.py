@@ -15,6 +15,8 @@ def logo():
 
 
 def web_scrape():
+        print("This Command Can't Clone Protected Sites TSL/SSL encryption")
+        tim.sleep(1)
         weurl = input("Enter Web Scrape Link: ")
         response = requests.get(weurl)
         x = response.text
