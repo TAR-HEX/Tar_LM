@@ -17,12 +17,15 @@ red = "\033[1;31m"
 
 def logo():
         time.sleep(0.5)
+        print(f"{yellow}==============================={reset}")
+        print(f"{red}==============================={reset}")
         print(f"{red}_____          _   _ ")
         print(f"|_   _|_ _ _ __| | | | _____  __")
         print(f"  | |/ _` | '__| |_| |/ _ \ \/ /")
         print(f"  | | (_| | |  |  _  |  __/>  <{yellow} Version: 1.00{red}")
         print(f"  |_|\__,_|_|  |_| |_|\___/_/\_\n{reset}")
-
+        print(f"{yellow}==============================={reset}")
+        print(f"{red}==============================={reset}")   
 
 def web_scrape():
         weurl = input("Enter Web Scrape Link: ")
@@ -153,6 +156,8 @@ def main():
         if choice == '1':
             web_scrape()
         elif choice == '3':
+            print(f"{yellow}Will Only Work If The Link Is Based On Locconnect site or similiar!{reset}")
+            time.sleep(1)
             link_fetch()
         elif choice == '2':
             track_ip()
