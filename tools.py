@@ -6,29 +6,34 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
+blue = "\033[1;34m"
+green = "\033[1;32m"
+cyan = "\033[1;36m"
+purple = "\033[1;35m"
+white = "\033[1;37m"
+reset = "\033[0m"
+yellow = "\033[1;33m"
+red = "\033[1;31m"
+
 def logo():
-        print(" _____          _   _ ")
-        print("|_   _|_ _ _ __| | | | _____  __")
-        print("  | |/ _` | '__| |_| |/ _ \ \/ /")
-        print("  | | (_| | |  |  _  |  __/>  < Version: 1.00") 
-        print("  |_|\__,_|_|  |_| |_|\___/_/\_\n")
+        print(f"{red}_____          _   _ ")
+        print(f"|_   _|_ _ _ __| | | | _____  __")
+        print(f"  | |/ _` | '__| |_| |/ _ \ \/ /")
+        print(f"  | | (_| | |  |  _  |  __/>  <{yellow} Version: 1.00{red}")
+        print(f"  |_|\__,_|_|  |_| |_|\___/_/\_\n{reset}")
 
 
 def web_scrape():
-        print("This Command Can't Clone Protected Sites TSL/SSL encryption")
-        tim.sleep(1)
         weurl = input("Enter Web Scrape Link: ")
         response = requests.get(weurl)
         x = response.text
-        print(" S = SAVE ")
-        print(" P = DISPLAY OUTPUT ")
         wurld = input("Enter Your Choice: ")
-        if wurld == "S":
+        if wurld == "/save":
             ftype = input("Enter File Name: ")
             with open(f'{ftype}', 'w') as file:
                 file.write(x)
                 print("Success")
-        elif wurld == "P":
+        elif wurld == "/print":
             print(x)
         else:
             print("No Option Chosen")
@@ -93,47 +98,51 @@ def track_ip():
 
     def print_details(ip_info):
         if ip_info:
-            print(f" [>] IP Address: {ip_info.get('ip')}")
-            print(f" [>] Hostname: {ip_info.get('hostname', 'N/A')}")
-            print(f" [>] City: {ip_info.get('city', 'N/A')}")
-            print(f" [>] Region: {ip_info.get('region', 'N/A')}")
-            print(f" [>] Country: {ip_info.get('country', 'N/A')}")
-            print(f" [>] Location: {ip_info.get('loc', 'N/A')}")
-            print(f" [>] Organization: {ip_info.get('org', 'N/A')}")
+            print(f" {red}[>]{reset} {yellow}IP Address:{reset} {ip_info.get('ip')}")
+            print(f" {red}[>]{reset} {yellow}Hostname:{reset} {ip_info.get('hostname', 'N/A')}")
+            print(f" {red}[>]{reset} {yellow}City:{reset} {ip_info.get('city', 'N/A')}")
+            print(f" {red}[>]{reset} {yellow}Region:{reset} {ip_info.get('region', 'N/A')}")
+            print(f" {red}[>]{reset} {yellow}Country:{reset} {ip_info.get('country', 'N/A')}")
+            print(f" {red}[>]{reset} {yellow}Location:{reset} {ip_info.get('loc', 'N/A')}")
+            print(f" {red}[>]{reset} {yellow}Organization:{reset} {ip_info.get('org', 'N/A')}")
         else:
-            input(" ENTER TO EXIT ")
+            input(f"{red} ENTER TO EXIT {reset}")
 
     def run():
         while True:
-            print("[1] CHECK OWN IP\n[2] CHECK OTHERS IP\n[0] EXIT")
-            choice = input(" CHOOSE : ")
+            logo()
+            print(f"{red}[1]{reset} {yellow}CHECK OWN IP{reset}\n{red}[2]{reset} {yellow}CHECK OTHERS IP{reset}\n{red}[0]{reset} {green}EXIT{reset}")
+            choice = input(f"{red}CHOOSE : {reset} ")
 
             if choice == '1':
                 target_ip = get_public_ip()
+                ip_details = get_details(target_ip)
+                print_details(ip_details)
             elif choice == '2':
-                target_ip = input(" ENTER IP ADDRESS : ")
-                continue
+                target_ip = input(f"{red}ENTER IP ADDRESS : {reset}")
+                if target_ip:
+                    ip_details = get_details(target_ip)
+                    print_details(ip_details)
+                else:
+                    print("No IP address provided.")
             elif choice == '0':
                 break
             else:
                 print(" NO OPTION FOUND")
                 continue
 
-            ip_details = get_details(target_ip)
-            print_details(ip_details)
-
     run()
 
 def main():
     while True:
         logo()
-        print("[1] WebClone\n[2] IP Tracking\n[3]Link Extract (phills only)\n[0] EXIT")
-        choice = input(" CHOOSE OPTION : ")
+        print(f"{red}[1]{reset}{yellow}WebClone{reset}\n{red}[2]{reset}{yellow} IP Tracking{reset}\n{red}[3]{reset}{yellow}Fetch Url{reset}\n{cyan}[0]{reset}{green} EXIT{reset}")
+        choice = input(f"{red} CHOOSE OPTION : {reset}")
 
         if choice == '1':
             web_scrape()
         elif choice == '3':
-        	link_fetch()
+            link_fetch()
         elif choice == '2':
             track_ip()
         elif choice == '0':
