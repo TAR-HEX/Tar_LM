@@ -20,13 +20,15 @@ def web_scrape():
         weurl = input("Enter Web Scrape Link: ")
         response = requests.get(weurl)
         x = response.text
+        print(" S = SAVE ")
+        print(" P = DISPLAY OUTPUT ")
         wurld = input("Enter Your Choice: ")
-        if wurld == "/save":
+        if wurld == "S":
             ftype = input("Enter File Name: ")
             with open(f'{ftype}', 'w') as file:
                 file.write(x)
                 print("Success")
-        elif wurld == "/print":
+        elif wurld == "P":
             print(x)
         else:
             print("No Option Chosen")
