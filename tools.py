@@ -26,6 +26,7 @@ def logo():
         print(f"  |_|\__,_|_|  |_| |_|\___/_/\_\n{reset}")
         print(f"{yellow}==============================={reset}")
         print(f"{red}==============================={reset}")   
+        time.sleep(0.8)
 
 def web_scrape():
         weurl = input("Enter Web Scrape Link: ")
