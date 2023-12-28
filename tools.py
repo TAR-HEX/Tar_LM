@@ -91,38 +91,6 @@ def link_fetch():
         else:
             print("Invalid command. Type '/help' for instructions.")
 
-def url_shortner():
-    try:
-        user_link = input(f"{yellow}Enter The Url :- {reset}")
-        urls = f"https://is.gd/create.php?format=simple&url={user_link}"
-        user_response = requests.get(urls)
-        shorturl = user_response.text
-        print(f"{red}=>{reset} {blue}{shorturl}{reset}")
-    except requests.ConnectionError:
-        print(f"{red}ERROR{reset}")
-        time.sleep(0.5)
-        print(f"{yellow}Make Sure Your{reset} {red}Internet{reset} {yellow}Is Enabled!{reset}")
-
-def track_ip():
-    def get_public_ip():
-        return req.get("https://api.ipify.org").text
-
-    def get_details(ip):
-        response = req.get(f"https://ipinfo.io/{ip}/json")
-        return response.json() if response.status_code == 200 else None
-
-    def print_details(ip_info):
-        if ip_info:
-            print(f" {red}[>]{reset} {yellow}IP Address:{reset} {ip_info.get('ip')}")
-            print(f" {red}[>]{reset} {yellow}Hostname:{reset} {ip_info.get('hostname', 'N/A')}")
-            print(f" {red}[>]{reset} {yellow}City:{reset} {ip_info.get('city', 'N/A')}")
-            print(f" {red}[>]{reset} {yellow}Region:{reset} {ip_info.get('region', 'N/A')}")
-            print(f" {red}[>]{reset} {yellow}Country:{reset} {ip_info.get('country', 'N/A')}")
-            print(f" {red}[>]{reset} {yellow}Location:{reset} {ip_info.get('loc', 'N/A')}")
-            print(f" {red}[>]{reset} {yellow}Organization:{reset} {ip_info.get('org', 'N/A')}")
-        else:
-            input(f"{red} ENTER TO EXIT {reset}")
-
     def run():
         while True:
             logo()
@@ -151,18 +119,16 @@ def track_ip():
 def main():
     while True:
         logo()
-        print(f"{red}[1]{reset}{yellow}WebClone{reset}\n{red}[2]{reset}{yellow} IP Tracking{reset}\n{red}[3]{reset}{yellow}Fetch Url{reset}\n{red}[4]{reset}{yellow}Mask Url{reset}\n{cyan}[0]{reset}{green}EXIT{reset}")
+        print(f"{red}[1]{reset}{yellow}WebClone{reset}\n[2]{reset}{yellow}Fetch Url{reset}\n{red}[3]{reset}{yellow}Mask Url{reset}\n{cyan}[0]{reset}{green}EXIT{reset}")
         choice = input(f"{red} CHOOSE OPTION : {reset}")
 
         if choice == '1':
             web_scrape()
-        elif choice == '3':
+        elif choice == '2':
             print(f"{yellow}Will Only Work If The Link Is Based On Locconnect site or similiar!{reset}")
             time.sleep(1)
             link_fetch()
-        elif choice == '2':
-            track_ip()
-        elif choice == '4':
+        elif choice == '3':
         	url_shortner()
         elif choice == '0':
             break
